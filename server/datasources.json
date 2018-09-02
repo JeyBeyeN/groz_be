@@ -1,0 +1,12 @@
+{
+  "db": {
+    "host": "cluster0-jeirk.mongodb.net",
+    "port": 0,
+    "url": "mongodb+srv://jbn:Foxpro123@cluster0-jeirk.mongodb.net/groz?retryWrites=true",
+    "database": "groz",
+    "password": "Foxpro123",
+    "name": "db",
+    "user": "jbn",
+    "connector": "mongodb"
+  }
+}

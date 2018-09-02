@@ -1,0 +1,102 @@
+{
+  "name": "list",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "listname": {
+      "type": "string",
+      "required": true
+    },
+    "defaultlist": {
+      "type": "boolean",
+      "default": false
+    },
+    "shared": {
+      "type": "boolean",
+      "default": false
+    },
+    "active": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "owner": {
+      "type": "string",
+      "required": true
+    },
+    "shareid": {
+      "type": "number"
+    },
+    "category": {
+      "type": "string"
+    },
+    "created_date": {
+      "type": "date",
+      "required": true,
+      "defaultFn": "now"
+    },
+    "updated_date": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "items": {
+      "type": "hasMany",
+      "model": "item",
+      "foreignKey": "listid",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {
+    "prototype.activelists": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "activelists",
+          "type": "object",
+          "root": true,
+          "description": "Active lists"
+        }
+      ],
+      "description": "Active Lists",
+      "http": [
+        {
+          "path": "/activelists",
+          "verb": "get"
+        }
+      ]
+    },
+    "alllists": {
+      "accepts": [],
+      "returns": [
+        {
+          "arg": "lists",
+          "type": "object",
+          "root": true,
+          "description": "Serving"
+        }
+      ],
+      "description": "All Lists",
+      "http": [
+        {
+          "path": "/alllists",
+          "verb": "get"
+        }
+      ]
+    }
+  }
+}
